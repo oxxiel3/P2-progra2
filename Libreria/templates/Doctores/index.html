@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block titulo %}Lista de doctores{% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'crearDoctores' %}" role="button">Agregar nuevo Doctor</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Doctores</h4>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre del Doctor</th>
+                        <th>Número de Colegiado</th>
+                        <th>Especialidad</th>
+                        <th>Número Telefónico</th>
+                        <th>Foto del Doctor</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for doctor in doctores %}
+                    <tr>
+                        <td>{{ doctor.id }}</td>
+                        <td>{{ doctor.nombre }}</td>
+                        <td>{{ doctor.numeroColegiado }}</td>
+                        <td>{{ doctor.especialidad }}</td>
+                        <td>{{ doctor.numeroTelefono }}</td>
+                        <td> {% if doctor.fotoDelDoctor %}
+                            <img src="{{doctor.fotoDelDoctor.url}}" alt="" height="100">
+                        </td>
+                        {% endif %}
+
+                        <td>
+                            <a name="" id="" class="btn btn-info" href="{% url 'editarDoctores' doctor.id %}"
+                                role="button">Editar</a> |
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminarD' doctor.id %}" role="button">Eliminar</a>
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        <!-- Contenido del pie de página de la tarjeta -->
+    </div>
+</div>
+
+{% endblock %}
