@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de pacientes {% endblock %}
+
+{% block contenido %}
+
+  <h1>Historiales Clínicos</h1>
+
+  <nav>
+    <ul>
+      
+    </ul>
+  </nav>
+
+  <a href="{% url 'createHIstory' %}" class="btn btn-primary">Agregar Nuevo Historial Clínico</a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Paciente</th>
+        <th>Doctor</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for historial in historiales %}
+        <tr>
+          <td>{{ historial.id }}</td>
+          <td>{{ historial.paciente }}</td>
+          <td>{{ historial.doctor }}</td>
+          <td>{{ historial.descripcion }}</td>
+          <td>
+            <a href="{%  url 'editHIstory' historial.id %}" class="btn btn-info">Editar</a>
+            
+            <a href="{%  url 'eliminarH' historial.id %}" class="btn btn-danger">Eliminar</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  
+{% endblock %}
+>

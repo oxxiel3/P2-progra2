@@ -1,0 +1,21 @@
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <h1>Crear un nuevo historial</h1>
+
+    <div class="mb-3">
+        <label for="paciente_id" class="form-label">{{ formulario.paciente_id.label }}</label>
+        {{ formulario.paciente_id }}
+    </div>
+    <div class="mb-3">
+        <label for="doctor_id" class="form-label">{{ formulario.doctor_id.label }}</label>
+        {{ formulario.doctor_id }}
+    </div>
+
+    <div class="mb-3">
+        <label for="descripcion" class="form-label"> Descripción </label>
+        {{ formulario.descripcion }}
+    </div>
+    <input name="" id="" class="btn btn-success" type="submit" value="Enviar información">
+    
+    <a name="" id="" class="btn btn-primary" href="{%url 'historial' %}" role="button">Cancelar</a>
+</form>
